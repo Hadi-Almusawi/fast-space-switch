@@ -8,7 +8,7 @@ keys, read your screen, or connect to the internet.
 
 Free and open source. Built for **macOS Tahoe 26**. macOS 27 is not supported. Older versions and Intel hardware have not been tested. The release download includes Apple Silicon and Intel code.
 
-[Website and switching example](https://hadi-almusawi.github.io/fast-space-switch/) | [Download](https://github.com/Hadi-Almusawi/fast-space-switch/releases/latest) | [Report a problem](https://github.com/Hadi-Almusawi/fast-space-switch/issues)
+[Website](https://hadi-almusawi.github.io/fast-space-switch/) | [Download](https://github.com/Hadi-Almusawi/fast-space-switch/releases/latest) | [Report a problem](https://github.com/Hadi-Almusawi/fast-space-switch/issues)
 
 ## How to switch macOS desktops without the animation
 

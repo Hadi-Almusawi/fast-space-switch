@@ -15,5 +15,4 @@ Only registers Ctrl+Left and Ctrl+Right. No other key recording, screen reading,
 Does not change trackpad swipes or Reduce Motion. No custom shortcuts or numbered-desktop selection.
 Uses private macOS features that may change. Not notarized by Apple.
 Installer changes two built-in Space shortcuts. Uninstaller restores them.
-Website example is an illustration, not a recording or benchmark.
 Swipe technique adapted from jurplel's InstantSpaceSwitcher (MIT).

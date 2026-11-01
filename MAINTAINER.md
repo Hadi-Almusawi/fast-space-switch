@@ -4,7 +4,7 @@
 
 Run `python3 scripts/verify.py`. Run `zsh scripts/package.sh` on macOS to build a universal release ZIP without starting the app or changing shortcut settings. Update the version in the plist, package script, page, product facts, and release notes together.
 
-The website is plain HTML, CSS, and a small local demo script. Pushing changes in `docs/` to main runs the Pages workflow. No analytics or outside fonts are needed.
+The website is plain HTML and CSS. Pushing changes in `docs/` to main runs the Pages workflow. No analytics or outside fonts are needed.
 
 The sitemap is at `https://hadi-almusawi.github.io/fast-space-switch/sitemap.xml`. This is a project site: a robots.txt inside this folder cannot control crawlers for the whole github.io host. Check the host's root robots.txt instead.
 
@@ -14,7 +14,7 @@ SoftwareApplication data describes the real app. There are no invented reviews o
 
 1. Add the website as a URL-prefix property in Google Search Console. Use Google's HTML verification file and put it in `docs/`, then publish it. Submit the sitemap and request indexing of the homepage.
 2. Add the same URL in Bing Webmaster Tools, verify it, and submit the sitemap. You can import a verified Search Console property.
-3. Record a short real demo with two clean desktops and no private windows. Show normal Ctrl+Arrow switching, then FastSpaceSwitch. The current website example is only an illustration. Use the recording in the README and on the site, with simple captions.
+3. If a demo would help, record two clean desktops with no private windows. Show normal Ctrl+Arrow switching, then FastSpaceSwitch. A short clip in the README is enough.
 4. Share the project in relevant Mac communities where their rules allow it. Use the draft below and state that you made the app. Do not post the same message across unrelated discussions.
 5. Ask early users for honest feedback and links when they recommend it. Do not buy stars, reviews, or links.
 6. Once a month, check the prompts below in Google and the AI tools you use. Try each a few times and note the date, mentions, sources, and whether the compatibility facts are right.

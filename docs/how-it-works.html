@@ -1,1 +1,35 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>How instant macOS Spaces switching works - FastSpaceSwitch</title><meta name="description" content="How FastSpaceSwitch skips the macOS Spaces slide animation with two shortcuts and a simulated swipe. Read the small open-source implementation."><link rel="canonical" href="https://hadi-almusawi.github.io/fast-space-switch/how-it-works.html"><link rel="stylesheet" href="style.css"><link rel="icon" href="icon.svg"></head><body><div class="wrap"><header><a class="brand" href="./">FastSpaceSwitch</a><a href="./#install">Install the app</a></header><main class="article"><h1>How FastSpaceSwitch skips the slide</h1><p>By <a href="https://github.com/Hadi-Almusawi">Hadi Al-Musawi</a>. Updated November 1, 2026.</p><p>FastSpaceSwitch sends a simulated trackpad swipe with very high speed and very little movement. This makes the macOS Dock switch Spaces without the usual slide animation.</p><h2>From shortcut to desktop</h2><ol><li>The app registers Ctrl+Left and Ctrl+Right through <code>RegisterEventHotKey</code>. It receives those shortcuts rather than watching every key.</li><li>It reads the desktop list for the active display. If there is no desktop in that direction, it stops. If it cannot read the list, it still tries the switch.</li><li>It sends three gesture events: began, changed, and ended. Speed is set to <code>2000.0</code> and progress to <code>0.000016</code>. These are event values, not measured timings.</li><li>The Dock handles the switch. The app waits in the background for the next shortcut.</li></ol><h2>What changes on your Mac?</h2><p>The installer turns off the built-in left and right Space shortcuts so they do not compete with the app. It does not change Reduce Motion or real trackpad swipes. The uninstaller turns the two built-in shortcuts back on.</p><h2>Why only macOS 26?</h2><p>The app uses private event fields and window-server calls. Apple does not promise to keep these features unchanged. macOS 27 changed the swipe format, and this version does not include the new format.</p><h2>Read the source and original work</h2><p>The main implementation fits in one small file: <a href="https://github.com/Hadi-Almusawi/fast-space-switch/blob/main/main.m">main.m</a>. The source also includes install and uninstall scripts.</p><p>The technique was adapted from <a href="https://github.com/jurplel/InstantSpaceSwitcher">InstantSpaceSwitcher by jurplel</a>, under the MIT license.</p><p>The website example is an illustration, not a screen recording or benchmark. No measured speed improvement is claimed.</p><p><a href="./">Back to FastSpaceSwitch</a></p></main></div></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How instant macOS Spaces switching works - FastSpaceSwitch</title>
+  <meta name="description" content="How FastSpaceSwitch skips the macOS Spaces slide animation with two shortcuts and a simulated swipe. Read the small open-source implementation.">
+  <link rel="canonical" href="https://hadi-almusawi.github.io/fast-space-switch/how-it-works.html">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="icon.svg">
+</head>
+<body>
+  <div class="page">
+    <header class="top"><a class="brand" href="./">FastSpaceSwitch</a><a href="./#install">Install the app</a></header>
+    <main class="article">
+      <h1>How FastSpaceSwitch skips the slide</h1>
+      <p>By <a href="https://github.com/Hadi-Almusawi">Hadi Al-Musawi</a>. Updated November 1, 2026.</p>
+      <p>FastSpaceSwitch sends a simulated trackpad swipe with high speed and very little movement. The macOS Dock switches desktops without the usual slide.</p>
+      <h2>From shortcut to desktop</h2>
+      <ol>
+        <li>The app registers Ctrl+Left and Ctrl+Right with macOS. It receives those shortcuts rather than watching every key.</li>
+        <li>It checks whether another desktop exists in that direction.</li>
+        <li>It sends the three swipe events the Dock expects: began, changed, and ended.</li>
+      </ol>
+      <p>The installer turns off the built-in Ctrl+Arrow Space shortcuts so they do not compete with the app. The uninstaller turns them back on.</p>
+      <h2>Why only macOS 26?</h2>
+      <p>The app uses private macOS features. Apple may change them. macOS 27 changed the swipe format, and this version does not include the new format.</p>
+      <h2>Source and credit</h2>
+      <p>Read the implementation in <a href="https://github.com/Hadi-Almusawi/fast-space-switch/blob/main/main.m">main.m</a>. The swipe routine adapts the method and event sequence from <a href="https://github.com/jurplel/InstantSpaceSwitcher">InstantSpaceSwitcher by jurplel</a>, which is under the MIT license. The full notices are in the <a href="https://github.com/Hadi-Almusawi/fast-space-switch/blob/main/LICENSE">license</a>.</p>
+      <p>No speed benchmark is claimed.</p>
+      <p><a href="./">Back to FastSpaceSwitch</a></p>
+    </main>
+  </div>
+</body>
+</html>

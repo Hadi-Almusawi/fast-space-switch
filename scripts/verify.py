@@ -73,7 +73,6 @@ with (ROOT / 'Info.plist').open('rb') as handle:
     assert plistlib.load(handle)['CFBundleShortVersionString'] == '1.0.0'
 for script in ('install.sh', 'uninstall.sh', 'scripts/package.sh'):
     subprocess.run([shutil.which('zsh') or 'bash', '-n', str(ROOT / script)], check=True)
-subprocess.run(['node', '--check', str(SITE / 'demo.js')], check=True)
 subprocess.run(['git', 'diff', '--check'], cwd=ROOT, check=True)
-print('PASS sitemap, app version, shell syntax, JavaScript syntax, diff')
+print('PASS sitemap, app version, shell syntax, diff')
 print('These checks do not test desktop switching, Gatekeeper, or page appearance.')

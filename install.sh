@@ -23,19 +23,9 @@ set_window_view_speed() {
 }
 
 # Build, or use the app included in a release download.
-if [[ "${1:-}" != "" && "${1:-}" != "--prebuilt" && "${1:-}" != "--no-permission" ]]; then
-  echo "Usage: ./install.sh [--prebuilt|--no-permission]" >&2
+if [[ "${1:-}" != "" && "${1:-}" != "--prebuilt" ]]; then
+  echo "Usage: ./install.sh [--prebuilt]" >&2
   exit 1
-fi
-if [[ "${1:-}" == "--no-permission" ]]; then
-  pkill -x FastSpaceSwitch 2>/dev/null || true
-  defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 79 '<dict><key>enabled</key><true/></dict>'
-  defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 81 '<dict><key>enabled</key><true/></dict>'
-  /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-  set_window_view_speed
-  echo "No app permission needed. Ctrl+Left/Right use macOS's normal slide."
-  echo "Ctrl+Up/Down use macOS's window views with the Dock animation set to zero."
-  exit 0
 fi
 if [[ "${1:-}" == "--prebuilt" ]]; then
   [[ -x "$APP/Contents/MacOS/FastSpaceSwitch" ]] || { echo "The release app is missing. Run ./install.sh to build it." >&2; exit 1; }

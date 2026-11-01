@@ -25,7 +25,15 @@ The release includes Apple Silicon and Intel code. Intel has not been tested.
 
 Keep the extracted folder because the app runs from there. The download is locally signed but not notarized. macOS may ask you to use **Open Anyway** on first launch.
 
-If you do not want to grant that permission, run `./install.sh --no-permission` instead. The app will not run. Ctrl+Left/Right use macOS's normal slide. Ctrl+Up/Down keep their Mac actions with the Dock animation time set to zero. The installer saves only your old Dock value in `~/Library/Application Support/FastSpaceSwitch/`. You can also turn on **Switch to Desktop 1, 2, ...** in **System Settings > Keyboard > Keyboard Shortcuts > Mission Control** for direct numbered jumps.
+### Homebrew
+
+```sh
+brew tap Hadi-Almusawi/fast-space-switch https://github.com/Hadi-Almusawi/fast-space-switch.git
+brew trust --cask Hadi-Almusawi/fast-space-switch/fast-space-switch
+brew install --cask Hadi-Almusawi/fast-space-switch/fast-space-switch
+```
+
+This installs the same app and also requires Accessibility access for instant Ctrl+Left/Right.
 
 To build it yourself, install Apple's Xcode Command Line Tools, then run:
 
@@ -37,7 +45,7 @@ cd fast-space-switch
 
 ## Questions
 
-**Why Accessibility access?** macOS requires it to send the desktop switch gesture. The app only receives its registered shortcuts. It does not record other keys, read your screen, or connect to the internet. There is no known way to make this exact instant Ctrl+Left/Right method work without that permission. Use `--no-permission` if you prefer macOS's normal switch.
+**Why Accessibility access?** macOS requires it to send the desktop switch gesture. The app only receives its registered shortcuts. It does not record other keys, read your screen, or connect to the internet. There is no known way to make this exact instant Ctrl+Left/Right method work without that permission.
 
 **Does it change other animations?** It sets the Dock's Mission Control and App Exposé animation time to zero. This can affect opening those views by trackpad too. Other Mac animations and Reduce Motion stay as they are. System Integrity Protection can stay on.
 
@@ -51,4 +59,4 @@ From the extracted folder, run `./uninstall.sh`. It removes the app, restores ma
 
 The app sends a very fast, tiny simulated trackpad swipe. It uses private macOS features, which may change in future updates. [Read how it works](https://hadi-almusawi.github.io/fast-space-switch/how-it-works.html) or [see the code](main.m).
 
-Made by [Hadi Al-Musawi](https://github.com/Hadi-Almusawi). [MIT license](LICENSE). Swipe technique adapted from [InstantSpaceSwitcher](https://github.com/jurplel/InstantSpaceSwitcher) by jurplel (MIT).
+Made by [Hadi Al-Musawi](https://github.com/Hadi-Almusawi). [MIT license](LICENSE).

@@ -1,6 +1,6 @@
 cask "fast-space-switch" do
-  version "1.1.1"
-  sha256 "9f8fda5709cec0af26146ac6aee45541f3f7b4d20c59ad169a0324d5549dc83e"
+  version "1.1.2"
+  sha256 "eac917bc9fbbb2447e9b13e5eaf2fb25fb0b6d61dd9831cf62ffbf1376d313ff"
 
   url "https://github.com/Hadi-Almusawi/fast-space-switch/releases/download/v#{version}/FastSpaceSwitch-#{version}.zip"
   name "FastSpaceSwitch"
@@ -26,7 +26,6 @@ cask "fast-space-switch" do
     The app runs from its Homebrew folder, not /Applications.
     Installation turns off the two built-in Ctrl+Arrow Space shortcuts.
     Ctrl+Up/Down stay macOS shortcuts. Install sets the Dock's window-view animation time to zero.
-    For a no-permission mode, use the release ZIP's ./install.sh --no-permission instead of Homebrew.
     Uninstalling restores the shortcuts and your old Dock setting. The app is not notarized by Apple.
   EOS
 end

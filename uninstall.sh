@@ -9,8 +9,10 @@ tccutil reset Accessibility local.hadi.fastspaceswitch 2>/dev/null
 rm -rf FastSpaceSwitch.app
 
 # Restore macOS's own "Move left/right a space" shortcuts
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 79 '<dict><key>enabled</key><true/></dict>'
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 81 '<dict><key>enabled</key><true/></dict>'
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 79 \
+  '<dict><key>enabled</key><true/><key>value</key><dict><key>parameters</key><array><integer>65535</integer><integer>123</integer><integer>8650752</integer></array><key>type</key><string>standard</string></dict></dict>'
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 81 \
+  '<dict><key>enabled</key><true/><key>value</key><dict><key>parameters</key><array><integer>65535</integer><integer>124</integer><integer>8650752</integer></array><key>type</key><string>standard</string></dict></dict>'
 /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 
 if [[ -f "$DOCK_BACKUP" ]]; then

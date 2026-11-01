@@ -1,28 +1,29 @@
-# FastSpaceSwitch - Instant macOS Spaces Switching Without Animation
+# FastSpaceSwitch
 
-Switch between Mac desktops instantly with **Ctrl+Left** and **Ctrl+Right**. FastSpaceSwitch skips the sliding animation when you move between macOS Spaces.
+Switch between Mac desktops with **Ctrl+Left** and **Ctrl+Right**, without the slide animation.
 
-It runs quietly in the background and stops at the first and last desktop.
-It only receives its two registered shortcuts. The app does not read other
-keys, read your screen, or connect to the internet.
+Free and open source. Made for **macOS Tahoe 26**. [Website](https://hadi-almusawi.github.io/fast-space-switch/) | [Download](https://github.com/Hadi-Almusawi/fast-space-switch/releases/latest)
 
-Free and open source. Built for **macOS Tahoe 26**. macOS 27 is not supported. Older versions and Intel hardware have not been tested. The release download includes Apple Silicon and Intel code.
+## Compatibility
 
-[Website](https://hadi-almusawi.github.io/fast-space-switch/) | [Download](https://github.com/Hadi-Almusawi/fast-space-switch/releases/latest) | [Report a problem](https://github.com/Hadi-Almusawi/fast-space-switch/issues)
+| macOS | Status |
+| --- | --- |
+| 26 Tahoe | ✓ Supported |
+| 27 | ✕ Not supported |
+| 25 and earlier | ? Not tested |
 
-## How to switch macOS desktops without the animation
+The release includes Apple Silicon and Intel code. Intel has not been tested.
 
-1. [Download the latest release](https://github.com/Hadi-Almusawi/fast-space-switch/releases/latest) and open the ZIP.
+## Install
+
+1. [Download the latest ZIP](https://github.com/Hadi-Almusawi/fast-space-switch/releases/latest) and open it.
 2. Open Terminal. Type `cd `, drag the extracted folder into Terminal, and press Return.
 3. Run `./install.sh --prebuilt`.
-4. Allow FastSpaceSwitch in **System Settings > Privacy & Security > Accessibility**. Quit and reopen the app if needed.
-5. Press **Ctrl+Left** or **Ctrl+Right**.
+4. Allow FastSpaceSwitch in **System Settings > Privacy & Security > Accessibility**.
 
-The download is locally signed, not notarized by Apple. macOS may block its first launch. Only if you trust the project, use **Privacy & Security > Open Anyway**, then reopen it. You can also build from source below. Keep the extracted folder after installing: the app runs from that folder.
+Keep the extracted folder because the app runs from there. The download is locally signed but not notarized. macOS may ask you to use **Open Anyway** on first launch.
 
-### Build from source
-
-Requires Apple's Xcode Command Line Tools. Install them with `xcode-select --install` if needed.
+To build it yourself, install Apple's Xcode Command Line Tools, then run:
 
 ```sh
 git clone https://github.com/Hadi-Almusawi/fast-space-switch.git
@@ -30,77 +31,20 @@ cd fast-space-switch
 ./install.sh
 ```
 
-### Homebrew
+## Questions
 
-Use this project's own tap:
+**Why Accessibility access?** macOS requires it to send the desktop switch gesture. The app only receives its registered shortcuts. It does not record other keys, read your screen, or connect to the internet. There is no known way to make this instant switching method work without that permission.
 
-```sh
-brew tap Hadi-Almusawi/fast-space-switch https://github.com/Hadi-Almusawi/fast-space-switch.git
-brew install --cask Hadi-Almusawi/fast-space-switch/fast-space-switch
-```
+**Does it change other animations?** No. Trackpad swipes and Reduce Motion stay as they are. System Integrity Protection can stay on.
 
-Then allow Accessibility access. This installs the app inside Homebrew's folder and changes the same two shortcuts. macOS 27 is not supported. To remove a Homebrew install, use `brew uninstall --cask fast-space-switch`.
+**Shortcut not working?** Check that the app is running and allowed in Accessibility. After a rebuild, remove its old permission entry and add it again. The app stops at the first and last desktop.
 
-Then turn on FastSpaceSwitch in System Settings > Privacy & Security >
-Accessibility. After every rebuild, remove it from that list and add it back,
-since macOS treats each build as a new app.
+## Remove
 
-`install.sh` turns off the built-in "Move left/right a space" shortcuts so
-Ctrl+Arrow reaches the app.
+From the extracted folder, run `./uninstall.sh`. It removes the app and restores macOS's built-in desktop shortcuts. Remove it from Login Items too if you added it there.
 
-To start it at login, add FastSpaceSwitch.app to Login Items yourself.
+## Source and license
 
-## Common questions
+The app sends a very fast, tiny simulated trackpad swipe. It uses private macOS features, which may change in future updates. [Read how it works](https://hadi-almusawi.github.io/fast-space-switch/how-it-works.html) or [see the code](main.m).
 
-### How do I make Ctrl+Arrow switch desktops faster on Mac?
-
-On macOS 26, run FastSpaceSwitch and allow Accessibility access. Ctrl+Left and Ctrl+Right then switch to the next desktop without the slide animation.
-
-### Does it change Reduce Motion or trackpad swipes?
-
-No. It only changes switching through its two shortcuts. Your trackpad and other Mac animations stay the same. It has no custom shortcuts or numbered-desktop shortcuts.
-
-### Do I need to turn off SIP?
-
-No. System Integrity Protection (SIP) can stay on.
-
-### Why does macOS ask for Accessibility access?
-
-macOS needs this permission before the app can send the gesture that switches desktops. The app only receives its two registered shortcuts. It does not record other keys, read your screen, or connect to the internet. Read [main.m](main.m) to check how it works.
-
-### Does it work on macOS 27?
-
-No. macOS 27 changed the gesture format. This version only uses the earlier format. See [InstantSpaceSwitcher](https://github.com/jurplel/InstantSpaceSwitcher) for other options.
-
-### Why do the shortcuts not work?
-
-Check that the app is running and allowed in Accessibility. After a rebuild, remove its old permission entry and add it again. Another app may be using the shortcuts. At the first or last desktop, the app stops rather than wrapping around.
-
-## Uninstall
-
-```sh
-./uninstall.sh
-```
-
-Stops the app, removes the build, and restores the built-in shortcuts.
-If you added the app to Login Items, remove it there too.
-
-## How it works
-
-The app sends a simulated trackpad swipe with very high speed and very little movement. This makes the Dock skip the slide. It uses private macOS features, which Apple may change in future updates.
-
-[Read the technical explanation](https://hadi-almusawi.github.io/fast-space-switch/how-it-works.html). No speed benchmark is claimed.
-
-## Check
-
-```sh
-FastSpaceSwitch.app/Contents/MacOS/FastSpaceSwitch status   # which directions are open
-```
-
-## Credit
-
-Made by [Hadi Al-Musawi](https://github.com/Hadi-Almusawi). Free under the [MIT license](LICENSE).
-
-Swipe technique adapted from
-[InstantSpaceSwitcher](https://github.com/jurplel/InstantSpaceSwitcher) by
-jurplel (MIT).
+Made by [Hadi Al-Musawi](https://github.com/Hadi-Almusawi). [MIT license](LICENSE). Swipe technique adapted from [InstantSpaceSwitcher](https://github.com/jurplel/InstantSpaceSwitcher) by jurplel (MIT).

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#202020"/>
+  <rect x="75" y="82" width="380" height="288" rx="12" fill="#353535" stroke="#666"/>
+  <rect x="505" y="82" width="380" height="288" rx="12" fill="#404040" stroke="#999"/>
+  <rect x="100" y="110" width="330" height="20" rx="5" fill="#555"/>
+  <rect x="530" y="110" width="330" height="20" rx="5" fill="#777"/>
+  <rect x="100" y="151" width="200" height="145" rx="8" fill="#656565"/>
+  <rect x="530" y="151" width="200" height="145" rx="8" fill="#898989"/>
+  <text x="480" y="432" text-anchor="middle" font-family="Arial,sans-serif" font-size="29" fill="#f4f4f4">Ctrl + →  switch desktops</text>
+  <text x="480" y="475" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#bbb">Illustration</text>
+</svg>

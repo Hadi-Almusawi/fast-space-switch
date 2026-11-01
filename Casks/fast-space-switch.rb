@@ -7,7 +7,7 @@ cask "fast-space-switch" do
   desc "Instant Ctrl+Arrow switching between macOS Spaces without animation"
   homepage "https://hadi-almusawi.github.io/fast-space-switch/"
 
-  depends_on macos: ">= :tahoe"
+  depends_on macos: :tahoe
 
   installer script: {
     executable: "#{staged_path}/FastSpaceSwitch-#{version}/install.sh",

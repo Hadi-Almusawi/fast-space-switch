@@ -1,7 +1,8 @@
 #!/bin/zsh
 # Stops FastSpaceSwitch, removes it, and gives Ctrl+Left/Right back to macOS.
 cd "$(dirname "$0")"
-DOCK_BACKUP="$PWD/.fastspaceswitch-dock-animation"
+DOCK_BACKUP_DIR="$HOME/Library/Application Support/FastSpaceSwitch"
+DOCK_BACKUP="$DOCK_BACKUP_DIR/dock-animation"
 
 pkill -x FastSpaceSwitch 2>/dev/null
 tccutil reset Accessibility local.hadi.fastspaceswitch 2>/dev/null
@@ -20,6 +21,7 @@ if [[ -f "$DOCK_BACKUP" ]]; then
     defaults write com.apple.dock expose-animation-duration -float "$old_duration"
   fi
   rm "$DOCK_BACKUP"
+  rmdir "$DOCK_BACKUP_DIR" 2>/dev/null || true
   killall Dock 2>/dev/null || true
 fi
 

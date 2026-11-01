@@ -4,12 +4,38 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 APP="$PWD/FastSpaceSwitch.app"
-DOCK_BACKUP="$PWD/.fastspaceswitch-dock-animation"
+DOCK_BACKUP_DIR="$HOME/Library/Application Support/FastSpaceSwitch"
+DOCK_BACKUP="$DOCK_BACKUP_DIR/dock-animation"
+
+set_window_view_speed() {
+  if [[ ! -f "$DOCK_BACKUP" ]]; then
+    mkdir -p "$DOCK_BACKUP_DIR"
+    if [[ -f "$PWD/.fastspaceswitch-dock-animation" ]]; then
+      mv "$PWD/.fastspaceswitch-dock-animation" "$DOCK_BACKUP"
+    elif old_duration="$(defaults read com.apple.dock expose-animation-duration 2>/dev/null)"; then
+      print -r -- "$old_duration" > "$DOCK_BACKUP"
+    else
+      print -r -- "unset" > "$DOCK_BACKUP"
+    fi
+  fi
+  defaults write com.apple.dock expose-animation-duration -float 0
+  killall Dock 2>/dev/null || true
+}
 
 # Build, or use the app included in a release download.
-if [[ "${1:-}" != "" && "${1:-}" != "--prebuilt" ]]; then
-  echo "Usage: ./install.sh [--prebuilt]" >&2
+if [[ "${1:-}" != "" && "${1:-}" != "--prebuilt" && "${1:-}" != "--no-permission" ]]; then
+  echo "Usage: ./install.sh [--prebuilt|--no-permission]" >&2
   exit 1
+fi
+if [[ "${1:-}" == "--no-permission" ]]; then
+  pkill -x FastSpaceSwitch 2>/dev/null || true
+  defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 79 '<dict><key>enabled</key><true/></dict>'
+  defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 81 '<dict><key>enabled</key><true/></dict>'
+  /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+  set_window_view_speed
+  echo "No app permission needed. Ctrl+Left/Right use macOS's normal slide."
+  echo "Ctrl+Up/Down use macOS's window views with the Dock animation set to zero."
+  exit 0
 fi
 if [[ "${1:-}" == "--prebuilt" ]]; then
   [[ -x "$APP/Contents/MacOS/FastSpaceSwitch" ]] || { echo "The release app is missing. Run ./install.sh to build it." >&2; exit 1; }
@@ -32,17 +58,8 @@ defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 81 \
   '<dict><key>enabled</key><false/><key>value</key><dict><key>parameters</key><array><integer>65535</integer><integer>124</integer><integer>8650752</integer></array><key>type</key><string>standard</string></dict></dict>'
 /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 
-# Ctrl+Up/Down stay macOS shortcuts. Remove the Dock's Exposé animation.
-# Save the user's old setting so uninstall can put it back.
-if [[ ! -f "$DOCK_BACKUP" ]]; then
-  if old_duration="$(defaults read com.apple.dock expose-animation-duration 2>/dev/null)"; then
-    print -r -- "$old_duration" > "$DOCK_BACKUP"
-  else
-    print -r -- "unset" > "$DOCK_BACKUP"
-  fi
-fi
-defaults write com.apple.dock expose-animation-duration -float 0
-killall Dock 2>/dev/null || true
+# Ctrl+Up/Down stay macOS shortcuts.
+set_window_view_speed
 
 open "$APP"
 echo "Installed. Ctrl+Up/Down use macOS's window views with the Dock animation set to zero."

@@ -25,6 +25,8 @@ The release includes Apple Silicon and Intel code. Intel has not been tested.
 
 Keep the extracted folder because the app runs from there. The download is locally signed but not notarized. macOS may ask you to use **Open Anyway** on first launch.
 
+If you do not want to grant that permission, run `./install.sh --no-permission` instead. The app will not run. Ctrl+Left/Right use macOS's normal slide. Ctrl+Up/Down keep their Mac actions with the Dock animation time set to zero. The installer saves only your old Dock value in `~/Library/Application Support/FastSpaceSwitch/`. You can also turn on **Switch to Desktop 1, 2, ...** in **System Settings > Keyboard > Keyboard Shortcuts > Mission Control** for direct numbered jumps.
+
 To build it yourself, install Apple's Xcode Command Line Tools, then run:
 
 ```sh
@@ -35,7 +37,7 @@ cd fast-space-switch
 
 ## Questions
 
-**Why Accessibility access?** macOS requires it to send the desktop switch gesture. The app only receives its registered shortcuts. It does not record other keys, read your screen, or connect to the internet. There is no known way to make this instant switching method work without that permission.
+**Why Accessibility access?** macOS requires it to send the desktop switch gesture. The app only receives its registered shortcuts. It does not record other keys, read your screen, or connect to the internet. There is no known way to make this exact instant Ctrl+Left/Right method work without that permission. Use `--no-permission` if you prefer macOS's normal switch.
 
 **Does it change other animations?** It sets the Dock's Mission Control and App Exposé animation time to zero. This can affect opening those views by trackpad too. Other Mac animations and Reduce Motion stay as they are. System Integrity Protection can stay on.
 

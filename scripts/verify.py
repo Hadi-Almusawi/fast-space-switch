@@ -70,7 +70,7 @@ for loc in tree.findall('.//{*}loc'):
     assert loc.text.startswith(BASE)
     assert (SITE / (loc.text.removeprefix(BASE) or 'index.html')).exists()
 with (ROOT / 'Info.plist').open('rb') as handle:
-    assert plistlib.load(handle)['CFBundleShortVersionString'] == '1.0.0'
+    assert plistlib.load(handle)['CFBundleShortVersionString'] == '1.1.0'
 for script in ('install.sh', 'uninstall.sh', 'scripts/package.sh'):
     subprocess.run([shutil.which('zsh') or 'bash', '-n', str(ROOT / script)], check=True)
 subprocess.run(['git', 'diff', '--check'], cwd=ROOT, check=True)

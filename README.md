@@ -2,6 +2,8 @@
 
 Switch between Mac desktops with **Ctrl+Left** and **Ctrl+Right**, without the slide animation.
 
+**Ctrl+Up** opens Mission Control and **Ctrl+Down** shows the current app's windows. The installer sets the Dock's window-view animation time to zero for these built-in Mac shortcuts.
+
 Free and open source. Made for **macOS Tahoe 26**. [Website](https://hadi-almusawi.github.io/fast-space-switch/) | [Download](https://github.com/Hadi-Almusawi/fast-space-switch/releases/latest)
 
 ## Compatibility
@@ -19,7 +21,7 @@ The release includes Apple Silicon and Intel code. Intel has not been tested.
 1. [Download the latest ZIP](https://github.com/Hadi-Almusawi/fast-space-switch/releases/latest) and open it.
 2. Open Terminal. Type `cd `, drag the extracted folder into Terminal, and press Return.
 3. Run `./install.sh --prebuilt`.
-4. Allow FastSpaceSwitch in **System Settings > Privacy & Security > Accessibility**.
+4. Allow FastSpaceSwitch in **System Settings > Privacy & Security > Accessibility** for Ctrl+Left/Right.
 
 Keep the extracted folder because the app runs from there. The download is locally signed but not notarized. macOS may ask you to use **Open Anyway** on first launch.
 
@@ -35,13 +37,13 @@ cd fast-space-switch
 
 **Why Accessibility access?** macOS requires it to send the desktop switch gesture. The app only receives its registered shortcuts. It does not record other keys, read your screen, or connect to the internet. There is no known way to make this instant switching method work without that permission.
 
-**Does it change other animations?** No. Trackpad swipes and Reduce Motion stay as they are. System Integrity Protection can stay on.
+**Does it change other animations?** It sets the Dock's Mission Control and App Exposé animation time to zero. This can affect opening those views by trackpad too. Other Mac animations and Reduce Motion stay as they are. System Integrity Protection can stay on.
 
 **Shortcut not working?** Check that the app is running and allowed in Accessibility. After a rebuild, remove its old permission entry and add it again. The app stops at the first and last desktop.
 
 ## Remove
 
-From the extracted folder, run `./uninstall.sh`. It removes the app and restores macOS's built-in desktop shortcuts. Remove it from Login Items too if you added it there.
+From the extracted folder, run `./uninstall.sh`. It removes the app, restores macOS's built-in desktop shortcuts, and puts your old Dock animation setting back. Remove it from Login Items too if you added it there.
 
 ## Source and license
 

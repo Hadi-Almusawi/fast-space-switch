@@ -23,6 +23,8 @@
         <li>It sends the three swipe events the Dock expects: began, changed, and ended.</li>
       </ol>
       <p>The installer turns off the built-in Ctrl+Arrow Space shortcuts so they do not compete with the app. The uninstaller turns them back on.</p>
+      <h2>Ctrl+Up and Ctrl+Down</h2>
+      <p>These stay macOS's own Mission Control and App Exposé shortcuts. The installer sets the Dock's <code>expose-animation-duration</code> preference to zero. It saves the old value and restores it when you uninstall. This Dock setting is undocumented, so Apple may change how it works.</p>
       <h2>Why only macOS 26?</h2>
       <p>The app uses private macOS features. Apple may change them. macOS 27 changed the swipe format, and this version does not include the new format.</p>
       <h2>Source and credit</h2>

@@ -9,9 +9,6 @@
 //
 // No network, no files, no other input, no screen access.
 //
-// Technique adapted from InstantSpaceSwitcher by jurplel (MIT license),
-// legacy (pre-macOS 27) gesture path.
-
 #import <Cocoa/Cocoa.h>
 #include <ApplicationServices/ApplicationServices.h>
 #include <Carbon/Carbon.h>

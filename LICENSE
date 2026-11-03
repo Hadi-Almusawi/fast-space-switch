@@ -1,7 +1,10 @@
+FastSpaceSwitch includes a swipe routine adapted from InstantSpaceSwitcher by jurplel:
+https://github.com/jurplel/InstantSpaceSwitcher
+
 MIT License
 
 Copyright (c) 2026 Hadi Al-Musawi
-Copyright (c) 2026 jurplel (InstantSpaceSwitcher, from which the swipe technique is adapted)
+Copyright (c) 2026 jurplel
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

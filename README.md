@@ -1,8 +1,8 @@
 # FastSpaceSwitch
 
-Switch between Mac desktops with **Ctrl+Left** and **Ctrl+Right**, without the slide animation.
+Switch desktops in an instant.
 
-**Ctrl+Up** opens Mission Control and **Ctrl+Down** shows the current app's windows. The installer sets the Dock's window-view animation time to zero for these built-in Mac shortcuts.
+**Ctrl+Left** and **Ctrl+Right** switch between Mac desktops without the slide animation.
 
 Free and open source. Made for **macOS Tahoe 26**. [Website](https://hadi-almusawi.github.io/fast-space-switch/) | [Download](https://github.com/Hadi-Almusawi/fast-space-switch/releases/latest)
 
@@ -12,18 +12,24 @@ Free and open source. Made for **macOS Tahoe 26**. [Website](https://hadi-almusa
 | --- | --- |
 | 26 Tahoe | ✓ Supported |
 | 27 | ✕ Not supported |
-| 25 and earlier | ? Not tested |
+| 15 Sequoia and earlier | ? Not tested |
 
-The release includes Apple Silicon and Intel code. Intel has not been tested.
+The release includes Apple Silicon and Intel code. Intel hardware has not been tested. The installer runs only on macOS 26.
 
 ## Install
 
-1. [Download the latest ZIP](https://github.com/Hadi-Almusawi/fast-space-switch/releases/latest) and open it.
-2. Open Terminal. Type `cd `, drag the extracted folder into Terminal, and press Return.
-3. Run `./install.sh --prebuilt`.
-4. Allow FastSpaceSwitch in **System Settings > Privacy & Security > Accessibility** for Ctrl+Left/Right.
+1. [Download the ZIP](https://github.com/Hadi-Almusawi/fast-space-switch/releases/download/v1.2.0/FastSpaceSwitch-1.2.0.zip). If it has not unzipped, double-click it in Downloads.
+2. Open Terminal and paste:
 
-Keep the extracted folder because the app runs from there. The download is locally signed but not notarized. macOS may ask you to use **Open Anyway** on first launch.
+   ```sh
+   cd ~/Downloads/FastSpaceSwitch-1.2.0 && ./install.sh --prebuilt
+   ```
+
+3. The installer copies FastSpaceSwitch to `~/Applications`, opens it, and sets it to open when you log in. Allow it in **System Settings > Privacy & Security > Accessibility** for instant Ctrl+Left/Right switching. macOS requires this access for the desktop switch gesture.
+
+If you saved the folder somewhere else, type `cd ` in Terminal, drag the unzipped folder in, and press Return. Then run `./install.sh --prebuilt`.
+
+You can delete the downloaded folder after installation. The app is locally signed but not notarized. If macOS blocks the first launch, use **Open Anyway** in **System Settings > Privacy & Security**.
 
 ### Homebrew
 
@@ -53,7 +59,7 @@ cd fast-space-switch
 
 ## Remove
 
-From the extracted folder, run `./uninstall.sh`. It removes the app, restores macOS's built-in desktop shortcuts, and puts your old Dock animation setting back. Remove it from Login Items too if you added it there.
+Run `zsh "$HOME/Library/Application Support/FastSpaceSwitch/uninstall.sh"`. It removes the app and login item, then restores your previous desktop shortcut and Dock animation settings. Installs made before 1.2.0 did not save the desktop shortcut settings, so those upgrades restore the standard Mac shortcuts.
 
 ## Source and license
 

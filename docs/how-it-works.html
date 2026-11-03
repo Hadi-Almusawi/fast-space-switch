@@ -11,25 +11,24 @@
 </head>
 <body>
   <div class="page">
-    <header class="top"><a class="brand" href="./">FastSpaceSwitch</a><a href="./#install">Install the app</a></header>
+    <header class="top"><a class="brand" href="./">FastSpaceSwitch</a><a href="./#get">Install the app</a></header>
     <main class="article">
-      <h1>How FastSpaceSwitch skips the slide</h1>
-      <p>By <a href="https://github.com/Hadi-Almusawi">Hadi Al-Musawi</a>. Updated November 1, 2026.</p>
-      <p>FastSpaceSwitch sends a simulated trackpad swipe with high speed and very little movement. The macOS Dock switches desktops without the usual slide.</p>
-      <h2>From shortcut to desktop</h2>
+      <h1>How FastSpaceSwitch works</h1>
+      <p>By <a href="https://github.com/Hadi-Almusawi">Hadi Al-Musawi</a>. Updated November 2, 2026.</p>
+      <p>FastSpaceSwitch sends a simulated trackpad swipe with high velocity and minimal movement. The macOS Dock switches desktops without the usual slide.</p>
+      <h2>When you press Ctrl+Left or Ctrl+Right</h2>
       <ol>
-        <li>The app registers Ctrl+Left and Ctrl+Right with macOS. It receives those shortcuts rather than watching every key.</li>
-        <li>It checks whether another desktop exists in that direction.</li>
+        <li>The app registers Ctrl+Left and Ctrl+Right with macOS. macOS sends those shortcuts directly to the app.</li>
+        <li>It checks whether there's a desktop to switch to.</li>
         <li>It sends the three swipe events the Dock expects: began, changed, and ended.</li>
       </ol>
-      <p>The installer turns off the built-in Ctrl+Arrow Space shortcuts so they do not compete with the app. The uninstaller turns them back on.</p>
-      <h2>Ctrl+Up and Ctrl+Down</h2>
-      <p>These stay macOS's own Mission Control and App Exposé shortcuts. The installer sets the Dock's <code>expose-animation-duration</code> preference to zero. It saves the old value in Library/Application Support/FastSpaceSwitch and restores it when you uninstall. This Dock setting is undocumented, so Apple may change how it works.</p>
+      <p>The installer copies the app to your Applications folder, sets it to open when you log in, and turns off the built-in Ctrl+Arrow Space shortcuts to prevent shortcut conflicts. It saves your previous shortcut settings in Library/Application Support/FastSpaceSwitch. The uninstaller restores them.</p>
+      <h2>Dock animation setting</h2>
+      <p>The installer sets the Dock's <code>expose-animation-duration</code> preference to zero. This can affect how Mission Control and App Exposé open. It saves your previous setting in Library/Application Support/FastSpaceSwitch and restores it when you uninstall. This Dock setting is undocumented, so Apple may change how it works.</p>
       <h2>Why only macOS 26?</h2>
-      <p>The app uses private macOS features. Apple may change them. macOS 27 changed the swipe format, and this version does not include the new format.</p>
-      <h2>Source and credit</h2>
-      <p>Read the implementation in <a href="https://github.com/Hadi-Almusawi/fast-space-switch/blob/main/main.m">main.m</a>. The swipe routine adapts the method and event sequence from <a href="https://github.com/jurplel/InstantSpaceSwitcher">InstantSpaceSwitcher by jurplel</a>, which is under the MIT license. The full notices are in the <a href="https://github.com/Hadi-Almusawi/fast-space-switch/blob/main/LICENSE">license</a>.</p>
-      <p>No speed benchmark is claimed.</p>
+      <p>The app uses private macOS features. Apple may change them. macOS 27 changed the swipe format, and this version does not support that format.</p>
+      <h2>Source code and credits</h2>
+      <p>Read the implementation in <a href="https://github.com/Hadi-Almusawi/fast-space-switch/blob/main/main.m">main.m</a> and the full notices in the <a href="https://github.com/Hadi-Almusawi/fast-space-switch/blob/main/LICENSE">license</a>.</p>
       <p><a href="./">Back to FastSpaceSwitch</a></p>
     </main>
   </div>

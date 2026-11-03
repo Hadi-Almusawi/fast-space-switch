@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FastSpaceSwitch - Instant macOS Spaces Switching Without Animation</title>
-  <meta name="description" content="Switch Mac desktops instantly with Ctrl+Left and Ctrl+Right. A free, open-source app for macOS Tahoe 26.">
+  <meta name="description" content="Switch Mac desktops without the slide with Ctrl+Left and Ctrl+Right. Free and open source for macOS Tahoe 26.">
   <meta name="theme-color" content="#171717">
   <link rel="canonical" href="https://hadi-almusawi.github.io/fast-space-switch/">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://hadi-almusawi.github.io/fast-space-switch/">
   <meta property="og:image" content="https://hadi-almusawi.github.io/fast-space-switch/social.png">
   <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"FastSpaceSwitch","url":"https://hadi-almusawi.github.io/fast-space-switch/"},{"@type":"SoftwareApplication","name":"FastSpaceSwitch","url":"https://hadi-almusawi.github.io/fast-space-switch/","description":"Free macOS 26 app for instant Ctrl+Left and Ctrl+Right desktop switching without the slide animation.","operatingSystem":"macOS 26","applicationCategory":"UtilitiesApplication","softwareVersion":"1.1.2","license":"https://github.com/Hadi-Almusawi/fast-space-switch/blob/main/LICENSE","downloadUrl":"https://github.com/Hadi-Almusawi/fast-space-switch/releases/latest","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Hadi Al-Musawi","url":"https://github.com/Hadi-Almusawi"}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"FastSpaceSwitch","url":"https://hadi-almusawi.github.io/fast-space-switch/"},{"@type":"SoftwareApplication","name":"FastSpaceSwitch","url":"https://hadi-almusawi.github.io/fast-space-switch/","description":"Free macOS 26 app for Ctrl+Left and Ctrl+Right desktop switching without the slide animation.","operatingSystem":"macOS 26","applicationCategory":"UtilitiesApplication","softwareVersion":"1.2.0","license":"https://github.com/Hadi-Almusawi/fast-space-switch/blob/main/LICENSE","downloadUrl":"https://github.com/Hadi-Almusawi/fast-space-switch/releases/latest","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Hadi Al-Musawi","url":"https://github.com/Hadi-Almusawi"}}]}</script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -24,16 +24,26 @@
     <header class="top"><a class="brand" href="./"><img src="icon.svg" width="28" height="28" alt="">FastSpaceSwitch</a><a href="https://github.com/Hadi-Almusawi/fast-space-switch">GitHub</a></header>
     <main id="main">
       <section class="hero" aria-labelledby="title">
-        <h1 id="title">Switch desktops.<br>Skip the slide.</h1>
-        <p>Move between Mac desktops with <kbd>Ctrl</kbd> + <kbd>←</kbd> and <kbd>Ctrl</kbd> + <kbd>→</kbd>. The switch feels instant.</p>
+        <h1 id="title">Switch desktops<br>in an instant.</h1>
+        <p><span class="desktop-shortcuts">Switch between Mac desktops instantly with <kbd>Ctrl</kbd> + <kbd>←</kbd> and <kbd>Ctrl</kbd> + <kbd>→</kbd>.</span></p>
         <a class="button" href="#get">Get FastSpaceSwitch</a>
-        <p class="note">Free, open source, and made for macOS Tahoe 26.</p>
+        <p class="note">Free and open source. Built for macOS Tahoe 26.</p>
       </section>
-      <section id="info"><h2>What it does</h2><p>FastSpaceSwitch runs quietly in the background. Ctrl+Left/Right switch desktops without the slide. Ctrl+Up/Down keep their normal Mac actions, with the Dock's window-view animation time set to zero. Desktop switching stops at the first and last desktop.</p></section>
-      <section id="video"><h2>See it</h2><video controls playsinline preload="metadata" poster="video-poster.svg" width="960" height="540" aria-label="Illustration of switching between two desktops"><source src="demo.mp4" type="video/mp4">Your browser cannot play this video.</video><p class="note">Simple illustration of the shortcut. Your Mac's windows will look different.</p></section>
-      <section class="compatibility" aria-labelledby="compatibility-title"><h2 id="compatibility-title">Compatibility</h2><div class="versions" role="list"><div role="listitem"><span>macOS 26 Tahoe</span><strong class="yes" aria-label="Supported">✓ Supported</strong></div><div role="listitem"><span>macOS 27</span><strong class="no" aria-label="Not supported">✕ Not supported</strong></div><div role="listitem"><span>macOS 25 and earlier</span><strong class="unknown" aria-label="Not tested">? Not tested</strong></div></div><p class="note">The release includes Apple Silicon and Intel code. Intel has not been tested.</p></section>
-      <section id="faq"><h2>FAQ</h2><details><summary>Why does it need Accessibility access?</summary><p>macOS requires it for the app's Ctrl+Left/Right desktop gesture. The app only receives those two shortcuts. It does not read your screen, record other keys, or connect to the internet. You can <a href="https://github.com/Hadi-Almusawi/fast-space-switch/blob/main/main.m">read the code</a>.</p></details><details><summary>Can it switch desktops instantly without that permission?</summary><p>No. macOS requires Accessibility access for the synthetic gesture that skips the slide.</p></details><details><summary>Does it change other Mac animations?</summary><p>The Dock setting can also change how Mission Control and App Exposé open by trackpad. Reduce Motion and other Mac animations stay as they are. Uninstall restores your old Dock setting.</p></details><details><summary>Does it need SIP turned off?</summary><p>No. Keep System Integrity Protection on.</p></details></section>
-      <section id="get"><h2>Get FastSpaceSwitch</h2><p>Download the latest ZIP, open it, then run the included installer:</p><pre><code>./install.sh --prebuilt</code></pre><p>Allow FastSpaceSwitch in <strong>System Settings &gt; Privacy &amp; Security &gt; Accessibility</strong> for instant Ctrl+Left/Right. Keep the extracted folder because the app runs from there.</p><a class="button" href="https://github.com/Hadi-Almusawi/fast-space-switch/releases/latest">Download on GitHub</a><p class="note">The app is locally signed, but not notarized. macOS may ask you to use Open Anyway on first launch. <a href="https://github.com/Hadi-Almusawi/fast-space-switch#homebrew">Homebrew steps</a> and <a href="https://github.com/Hadi-Almusawi/fast-space-switch#install">build from source</a> are on GitHub.</p></section>
+      <section id="info"><h2>What is FastSpaceSwitch?</h2><p>FastSpaceSwitch runs in the background and removes the slide animation when you switch desktops with Ctrl + ← or Ctrl + →. Switching stops at the first and last desktop.</p></section>
+      <section class="compatibility" aria-labelledby="compatibility-title"><h2 id="compatibility-title">Compatibility</h2><div class="versions" role="list"><div role="listitem"><span>macOS Tahoe 26</span><strong class="yes" aria-label="Supported">✓ Supported</strong></div><div role="listitem"><span>macOS 27</span><strong class="no" aria-label="Not supported">✕ Not supported</strong></div><div role="listitem"><span>macOS Sequoia 15 and earlier</span><strong class="unknown" aria-label="Not tested">? Not tested</strong></div></div><p class="note">The installer runs only on macOS 26. The release includes versions for Apple Silicon and Intel Macs. Intel hardware has not been tested.</p></section>
+      <section id="faq"><h2>Frequently asked questions</h2><details><summary>Why does FastSpaceSwitch need Accessibility access?</summary><p>macOS requires it for the app's Ctrl+Left/Right desktop gesture. The app only receives those two shortcuts. It does not read your screen, record other keys, or connect to the internet. You can <a href="https://github.com/Hadi-Almusawi/fast-space-switch/blob/main/main.m">read the code</a>.</p></details><details><summary>Can I switch desktops instantly without granting access?</summary><p>No. macOS requires Accessibility access for the synthetic gesture that skips the slide.</p></details><details><summary>Does it affect other macOS animations?</summary><p>The Dock setting can also change how Mission Control and App Exposé open by trackpad. Reduce Motion and other Mac animations stay as they are. Uninstall restores your old Dock setting.</p></details><details><summary>Do I need to disable System Integrity Protection (SIP)?</summary><p>No. Keep System Integrity Protection on.</p></details></section>
+      <section id="get">
+        <h2>Install FastSpaceSwitch</h2>
+        <ol>
+          <li>Download the ZIP. If it has not unzipped, double-click it in Downloads.</li>
+          <li>Open Terminal and paste this line:</li>
+        </ol>
+        <pre><code>cd ~/Downloads/FastSpaceSwitch-1.2.0 &amp;&amp; ./install.sh --prebuilt</code></pre>
+        <p>If you saved the folder somewhere else, type <code>cd </code> in Terminal, drag the folder in, and press Return. Then run <code>./install.sh --prebuilt</code>.</p>
+        <p>The installer copies the app to <code>~/Applications</code>, opens it, and sets it to open when you log in. Allow FastSpaceSwitch in <strong>System Settings &gt; Privacy &amp; Security &gt; Accessibility</strong> for instant Ctrl+Left/Right. macOS requires this access for the desktop switch gesture. You can then delete the downloaded folder.</p>
+        <a class="button" href="https://github.com/Hadi-Almusawi/fast-space-switch/releases/download/v1.2.0/FastSpaceSwitch-1.2.0.zip">Download ZIP</a>
+        <p class="note">The app is locally signed, but not notarized. If macOS blocks the first launch, use Open Anyway in Privacy &amp; Security. <a href="https://github.com/Hadi-Almusawi/fast-space-switch#homebrew">Homebrew steps</a> and <a href="https://github.com/Hadi-Almusawi/fast-space-switch#install">build from source</a> are on GitHub.</p>
+      </section>
     </main>
     <footer><span>Made by <a href="https://github.com/Hadi-Almusawi">Hadi Al-Musawi</a></span><a href="how-it-works.html">How it works</a><a href="privacy.html">Site privacy</a><a href="https://github.com/Hadi-Almusawi/fast-space-switch/blob/main/LICENSE">License</a></footer>
   </div>

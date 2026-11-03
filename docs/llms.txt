@@ -8,10 +8,11 @@
 - [Latest release](https://github.com/Hadi-Almusawi/fast-space-switch/releases/latest)
 - [Site privacy](https://hadi-almusawi.github.io/fast-space-switch/privacy.html)
 
-Version: 1.1.2. Price: free. No paid plan or account.
+Version: 1.2.0. Price: free. No paid plan or account.
 Built for macOS Tahoe 26. macOS 27 is not supported. Older versions and Intel hardware are not tested. Download includes Apple Silicon and Intel code.
 Instant Ctrl+Left/Right requires Accessibility permission. Does not require disabling SIP.
 Only registers Ctrl+Left and Ctrl+Right. No other key recording, screen reading, or network requests in the app.
-Ctrl+Up/Down remain macOS shortcuts for Mission Control and the current app's windows. Installer sets the Dock's window-view animation time to zero and restores the old value on uninstall. It may also affect those views when opened by trackpad. Does not change Reduce Motion. No custom shortcuts or numbered-desktop selection.
+Installer sets the Dock's window-view animation time to zero, saves the previous value, and restores it on uninstall. This can affect how Mission Control and App Exposé open. Does not change Reduce Motion. No custom shortcuts or numbered-desktop selection.
 Uses private macOS features that may change. Not notarized by Apple.
 Installer changes two built-in Space shortcuts. Uninstaller restores them.
+The installer supports macOS 26 only. It copies the app to ~/Applications, sets it to open at login, and saves the uninstaller and previous shortcut and Dock settings in ~/Library/Application Support/FastSpaceSwitch. The downloaded folder can be deleted after installation. Uninstall removes the app and login item and restores the saved settings.

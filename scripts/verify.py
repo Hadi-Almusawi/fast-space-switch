@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Check static pages and release details without installing the app."""
 import json
+import os
 import pathlib
 import plistlib
 import shutil
 import subprocess
+import tempfile
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from urllib.parse import urlsplit
@@ -70,9 +72,24 @@ for loc in tree.findall('.//{*}loc'):
     assert loc.text.startswith(BASE)
     assert (SITE / (loc.text.removeprefix(BASE) or 'index.html')).exists()
 with (ROOT / 'Info.plist').open('rb') as handle:
-    assert plistlib.load(handle)['CFBundleShortVersionString'] == '1.1.2'
+    assert plistlib.load(handle)['CFBundleShortVersionString'] == '1.2.0'
 for script in ('install.sh', 'uninstall.sh', 'scripts/package.sh'):
     subprocess.run([shutil.which('zsh') or 'bash', '-n', str(ROOT / script)], check=True)
+with tempfile.TemporaryDirectory(prefix='fastspaceswitch-version-check-') as temporary:
+    temporary = pathlib.Path(temporary)
+    fake_bin = temporary / 'bin'
+    fake_bin.mkdir()
+    fake_sw_vers = fake_bin / 'sw_vers'
+    fake_sw_vers.write_text('#!/bin/sh\necho 27.0\n')
+    fake_sw_vers.chmod(0o755)
+    environment = dict(os.environ, HOME=str(temporary), PATH=f'{fake_bin}:{os.environ["PATH"]}')
+    for unsupported in ('15.8', '27.0'):
+        fake_sw_vers.write_text(f'#!/bin/sh\necho {unsupported}\n')
+        result = subprocess.run([shutil.which('zsh') or 'bash', str(ROOT / 'install.sh'), '--prebuilt'],
+                                cwd=ROOT, env=environment, capture_output=True, text=True)
+        assert result.returncode != 0 and 'Nothing was installed or changed' in result.stderr
+        assert not (temporary / 'Applications').exists()
+        assert not (temporary / 'Library').exists()
 subprocess.run(['git', 'diff', '--check'], cwd=ROOT, check=True)
-print('PASS sitemap, app version, shell syntax, diff')
+print('PASS sitemap, app version, shell syntax, unsupported macOS guard, diff')
 print('These checks do not test desktop switching, Gatekeeper, or page appearance.')
